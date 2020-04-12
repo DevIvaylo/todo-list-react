@@ -1,7 +1,6 @@
 # Todo List - React
 
-`Simple todo app where the user can create a todo item, can edit an existing one as well as deleting it or delete all todo's.`
-
+### Simple todo app where the user can create a todo item, can edit an existing one as well as deleting it or delete all todo's.
 ### `This project is using:` 
  - Bootstrap for styling and 0 css.
  - Font Awesome for icons.
