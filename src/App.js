@@ -9,10 +9,7 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            items: [
-                {id: 1, title: 'wake up'},
-                {id: 2, title: 'make breakfast'}
-            ],
+            items: [],
             id: uuidv4(),
             item: '',
             editItem: false
@@ -20,10 +17,27 @@ class App extends Component {
     }
 
     handleChange = (event) => {
-        console.log('handleChange');
+        this.setState({
+            item: event.target.value
+        });
     };
-    handleSubmit = () => {
-        console.log('handleSubmit');
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+        const newItem = {
+            id: this.state.id,
+            title: this.state.item
+        };
+
+        const updatedItems = [...this.state.items, newItem];
+        if (newItem.title.length > 0) {
+            this.setState({
+                items: updatedItems,
+                id: uuidv4(),
+                item: '',
+                editItem: false,
+            }, () => console.log(this.state));
+        }
     };
 
     clearList = () => {
@@ -40,8 +54,6 @@ class App extends Component {
 
 
     render() {
-        console.log(this.state);
-
         return (
             <div className="container">
                 <div className="row">
