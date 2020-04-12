@@ -28,16 +28,13 @@ class App extends Component {
             id: this.state.id,
             title: this.state.item
         };
-
         const updatedItems = [...this.state.items, newItem];
-        if (newItem.title.length > 0) {
-            this.setState({
-                items: updatedItems,
-                id: uuidv4(),
-                item: '',
-                editItem: false,
-            }, () => console.log(this.state));
-        }
+        this.setState({
+            items: updatedItems,
+            id: uuidv4(),
+            item: '',
+            editItem: false,
+        }, () => console.log(this.state));
     };
 
     clearList = () => {
@@ -55,7 +52,15 @@ class App extends Component {
     };
 
     handleEdit = (id) => {
-        console.log('handleEdit');
+        const sortedItems = this.state.items.filter(item => item.id !== id);
+        const selectedItem = this.state.items.find(item => item.id === id);
+
+        this.setState({
+            items: sortedItems,
+            item: selectedItem.title,
+            id: id,
+            editItem: true
+        }, () => console.log(this.state));
     };
 
 
