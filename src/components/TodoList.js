@@ -7,7 +7,7 @@ export default class TodoList extends Component {
         return (
             <ul className='list-group my-5'>
                 <h3 className='text-capitalize text-center'>todo list</h3>
-                {items.map(item => <TodoItem key={item.id} title={item.title}
+                {items.map(item => <TodoItem id={item.id} title={item.title}
                                              handleEdit={handleEdit}
                                              handleDelete={handleDelete}/>)}
                 <button type='button'
